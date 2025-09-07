@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 import { Globe, Menu, X } from "lucide-react";
-import { Button } from "../components/ui/Button";
+import { Button } from "../ui/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../components/ui/dropdown-menu";
+} from "../ui/dropdown-menu";
 
 const Navbar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
