@@ -1,6 +1,6 @@
 import { ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
-import heroImage from "../../../public/heroImage.jpg";
+import heroImage from "../../../public/JHARKHAND_DUMMY.jpeg";
 
 const HeroSection = () => {
   return (
@@ -36,7 +36,7 @@ const HeroSection = () => {
           <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
             Discover Jharkhand:
             <br />
-            <span className="text-gradient bg-gradient-to-r from-accent-light to-primary-light bg-clip-text text-white">
+            <span className="text-gradient bg-gradient-to-r from-accent-light to-primary-light bg-clip-text text-transparent">
               Nature, Culture & Adventure
             </span>
           </h1>
