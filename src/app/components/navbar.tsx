@@ -16,7 +16,6 @@ const Navbar: React.FC = () => {
   const links = [
     { name: "Home", href: "#" },
     { name: "Destinations", href: "#" },
-    { name: "Plan Trip", href: "#" },
     { name: "Marketplace", href: "#" },
     { name: "Guides", href: "#" },
     { name: "Transport", href: "#" },
@@ -59,8 +58,8 @@ const Navbar: React.FC = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem>English</DropdownMenuItem>
-              <DropdownMenuItem>हिंदी</DropdownMenuItem>
+              <DropdownMenuItem className="text-black">English</DropdownMenuItem>
+              <DropdownMenuItem className="text-black">हिंदी</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
