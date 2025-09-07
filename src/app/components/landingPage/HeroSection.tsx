@@ -18,12 +18,18 @@ const HeroSection = () => {
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 overlay-gradient"></div>
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div
+          className="absolute inset-0 overlay-gradient"
+          aria-hidden="true"
+        ></div>
+        <div
+          className="absolute inset-0 bg-black/20"
+          aria-hidden="true"
+        ></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-responsive section-padding text-center text-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 text-center text-white">
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
@@ -36,7 +42,7 @@ const HeroSection = () => {
           <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
             Discover Jharkhand:
             <br />
-            <span className="text-gradient bg-gradient-to-r from-accent-light to-primary-light bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-accent-light to-primary-light bg-clip-text text-transparent">
               Nature, Culture & Adventure
             </span>
           </h1>
