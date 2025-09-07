@@ -4,7 +4,7 @@ import Footer from "../components/footer"
 function Landing() {
   return (
     <>
-        <Footer />
+      <Footer />
     </>
   )
 }
