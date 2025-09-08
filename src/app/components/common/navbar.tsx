@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { useRouter } from "next/navigation";
 
 import logo from "../../../public/Logo.png";
 
@@ -17,6 +18,7 @@ const Navbar: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [logoPopup, setLogoPopup] = useState(false);
+  const router = useRouter();
 
   const links = [
     { name: "Home", href: "#" },
@@ -112,7 +114,10 @@ const Navbar: React.FC = () => {
 
             {/* Auth Buttons */}
             <div className="hidden md:flex space-x-3">
-              <Button className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
+              <Button 
+                onClick={() => router.push("../../pages/login")} 
+                className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+              >
                 Login
               </Button>
               <Button className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
@@ -160,7 +165,10 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <div className="flex flex-col space-y-3 mt-6">
-            <Button className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
+            <Button 
+              onClick={() => router.push("../../pages/login")} 
+              className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            >
               Login
             </Button>
             <Button className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
