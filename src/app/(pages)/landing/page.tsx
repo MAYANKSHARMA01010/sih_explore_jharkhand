@@ -5,6 +5,7 @@ import HeroSection from '../../components/landingPage/HeroSection'
 import Footer from "../../components/common/footer" 
 import Navbar from '../../components/common/navbar'
 import ProblemSection from '../../components/landingPage/ProblemSection'
+import Features from '@/app/components/landingPage/Features';
 
 function Landing() {
   return (
@@ -12,6 +13,7 @@ function Landing() {
       <Navbar />
       <HeroSection />
       <ProblemSection />
+      <Features/>
       <Footer />
     </>
   )
