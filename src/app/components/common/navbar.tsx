@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
             {/* Auth Buttons */}
             <div className="hidden md:flex space-x-3">
               <Button 
-                onClick={() => router.push("../../pages/login")} 
+                onClick={() => router.push("/login")} 
                 className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
                 Login
@@ -166,7 +166,7 @@ const Navbar: React.FC = () => {
           ))}
           <div className="flex flex-col space-y-3 mt-6">
             <Button 
-              onClick={() => router.push("../../pages/login")} 
+              onClick={() => router.push("/login")} 
               className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
             >
               Login
