@@ -21,12 +21,12 @@ const Navbar: React.FC = () => {
   const router = useRouter();
 
   const links = [
-    { name: "Home", href: "#" },
-    { name: "Destinations", href: "#" },
-    { name: "Marketplace", href: "#" },
-    { name: "Guides", href: "#" },
-    { name: "Transport", href: "#" },
-    { name: "Dashboard", href: "#" },
+    { name: "Home", path: "/" },
+    { name: "Destinations", path: "/destinations" },
+    { name: "Marketplace", path: "/marketplace" },
+    { name: "Guides", path: "/guides" },
+    { name: "Transport", path: "/transport" },
+    { name: "Dashboard", path: "/dashboard" },
   ];
 
   useEffect(() => {
@@ -75,14 +75,14 @@ const Navbar: React.FC = () => {
             }`}
           >
             {links.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
+                onClick={() => router.push(link.path)}
                 className="relative group text-lg transition-all duration-300"
               >
                 <span className="group-hover:text-green-500">{link.name}</span>
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-green-400 to-yellow-400 transition-all duration-500 group-hover:w-full"></span>
-              </a>
+              </button>
             ))}
           </div>
 
@@ -114,13 +114,16 @@ const Navbar: React.FC = () => {
 
             {/* Auth Buttons */}
             <div className="hidden md:flex space-x-3">
-              <Button 
-                onClick={() => router.push("/login")} 
+              <Button
+                onClick={() => router.push("/login")}
                 className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
                 Login
               </Button>
-              <Button className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
+              <Button
+                onClick={() => router.push("/plan-trip")}
+                className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+              >
                 Plan Your Trip
               </Button>
             </div>
@@ -155,23 +158,34 @@ const Navbar: React.FC = () => {
         </div>
         <div className="flex flex-col px-6 py-6 space-y-5">
           {links.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
-              className="text-lg text-gray-700 hover:text-green-600 font-medium transition-colors duration-300"
-              onClick={() => setSidebarOpen(false)}
+              onClick={() => {
+                router.push(link.path);
+                setSidebarOpen(false);
+              }}
+              className="text-lg text-gray-700 hover:text-green-600 font-medium transition-colors duration-300 text-left"
             >
               {link.name}
-            </a>
+            </button>
           ))}
           <div className="flex flex-col space-y-3 mt-6">
-            <Button 
-              onClick={() => router.push("/login")} 
+            <Button
+              onClick={() => {
+                router.push("/login");
+                setSidebarOpen(false);
+              }}
               className="bg-green-600 text-white px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
             >
               Login
             </Button>
-            <Button className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg">
+            <Button
+              onClick={() => {
+                router.push("/plan-trip");
+                setSidebarOpen(false);
+              }}
+              className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
+            >
               Plan Your Trip
             </Button>
           </div>
