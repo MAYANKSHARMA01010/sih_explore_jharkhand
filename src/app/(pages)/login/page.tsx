@@ -4,6 +4,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 /**
  * LoginPage.tsx
@@ -29,6 +30,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     let t: number | undefined;
@@ -162,7 +164,7 @@ export default function LoginPage() {
             <div className="mt-4 p-3 rounded bg-green-50 border border-green-100 text-green-800">You are signed in — redirecting...</div>
           )}
 
-          <div className="mt-4 text-sm text-gray-600">Don't have an account? <a className="text-green-700 underline" href="#">Create one</a></div>
+          <div className="mt-4 text-sm text-gray-600">Don't have an account? <a className="text-green-700 underline" onClick={() => router.push("/register")}>Create one</a></div>
         </div>
 
       <style jsx>{`
