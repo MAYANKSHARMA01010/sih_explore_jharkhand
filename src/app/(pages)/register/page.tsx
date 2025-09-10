@@ -3,6 +3,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import Footer from "@/app/components/common/footer";
+import Navbar from "@/app/components/common/navbar";
 import React, { useState, useEffect } from "react";
 
 /**
@@ -218,7 +220,9 @@ export default function SignupWizard() {
 
   // ---------- Render ----------
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-2xl shadow-lg text-black">
+    <>
+    <Navbar />
+    <div className="max-w-3xl mt-50 mb-50 mx-auto p-6 bg-white rounded-2xl shadow-lg text-black">
       <h2 className="text-2xl font-semibold mb-4">Create account</h2>
 
       {/* Role selection */}
@@ -511,5 +515,7 @@ export default function SignupWizard() {
         }
       `}</style>
     </div>
+    <Footer />
+    </>
   );
 }
