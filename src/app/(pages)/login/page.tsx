@@ -5,6 +5,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Navbar from "@/app/components/common/navbar";
+import Footer from "@/app/components/common/footer";
 
 /**
  * LoginPage.tsx
@@ -104,7 +106,9 @@ export default function LoginPage() {
   function resetError() { setError(null); }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50 py-12">
+   <>
+   <Navbar />
+    <div className="min-h-screen flex items-center justify-center bg-green-300 py-12">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-green-100">
         <h1 className="text-2xl font-bold text-green-700 mb-1">Welcome back</h1>
         <p className="text-sm text-gray-600 mb-6">Sign in to your account — choose password or OTP login.</p>
@@ -235,5 +239,7 @@ export default function LoginPage() {
       `}</style>
       </div>
     </div>
+    <Footer />
+   </>
   );
 }
