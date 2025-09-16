@@ -1,95 +1,187 @@
-"use client"
+"use client";
 
-import React from 'react'
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import React from "react";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
+import Image from "next/image";
+import logo from "../../../public/Logo.png";
+import { useRouter } from "next/navigation";
 
 function Footer() {
+  const router = useRouter();
+
   return (
-    <>
-      <footer className="bg-[#3b2b20] text-white py-10">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
-          
-          {/* Brand Info */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-teal-500 text-white font-bold text-lg px-2 py-1 rounded-lg">EJ</div>
-              <h2 className="text-xl font-bold">Explore Jharkhand</h2>
-            </div>
-            <p className="text-sm leading-6 mb-4">
-              Discover the hidden gems of Jharkhand with AI-powered travel planning,
-              authentic cultural experiences, and sustainable eco-tourism that
-              empowers local communities.
-            </p>
-            <div className="space-y-2 text-sm">
-              <p className="flex items-center gap-2"><MapPin size={16}/> Ranchi, Jharkhand, India</p>
-              <p className="flex items-center gap-2"><Phone size={16}/> +91 12345 67890</p>
-              <p className="flex items-center gap-2"><Mail size={16}/> hello@explorejharkhand.com</p>
-            </div>
-            <div className="flex gap-3 mt-4">
-              <a href="#" className="p-2 bg-[#4b3a2f] rounded-lg hover:bg-teal-600"><Facebook size={16}/></a>
-              <a href="#" className="p-2 bg-[#4b3a2f] rounded-lg hover:bg-teal-600"><Twitter size={16}/></a>
-              <a href="#" className="p-2 bg-[#4b3a2f] rounded-lg hover:bg-teal-600"><Instagram size={16}/></a>
-              <a href="#" className="p-2 bg-[#4b3a2f] rounded-lg hover:bg-teal-600"><Youtube size={16}/></a>
-            </div>
-          </div>
+    <footer className="relative overflow-hidden bg-gray-950 text-white">
+      {/* Background overlay*/}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/80 to-transparent"></div>
+      </div>
 
-          {/* About */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">About</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Our Story</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Team</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Careers</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Press Kit</a></li>
-            </ul>
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Brand Info */}
+        <div>
+          <div className="flex items-center gap-3 mb-5">
+            <Image
+              src={logo}
+              alt="Johar Logo"
+              width={50}
+              height={50}
+              className="drop-shadow-md"
+            />
+            <h2 className="text-2xl font-extrabold bg-gradient-to-r from-emerald-400 to-yellow-400 bg-clip-text text-transparent">
+              Johar
+            </h2>
           </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">AI Trip Planner</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Local Guides</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Homestays</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Marketplace</a></li>
-            </ul>
-          </div>
-
-          {/* Community */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Community</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Become a Guide</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Sell Handicrafts</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Host Travelers</a></li>
-              <li><a href="#" className="hover:underline hover:text-green-400 hover:scale-105 transform transition-all duration-200 inline-block">Partner with Us</a></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Government Partnerships */}
-        <div className="border-t border-gray-600 mt-10 pt-6 text-center text-gray-300">
-          <h3 className="font-semibold mb-2">Government Partnerships</h3>
-          <p className="text-sm space-x-4">
-            <span>Jharkhand Tourism Board</span> • 
-            <span>Ministry of Tourism, India</span> • 
-            <span>Digital India Initiative</span> • 
-            <span>Startup India</span>
+          <p className="text-gray-300 text-sm leading-6 mb-6">
+            Explore Jharkhand with AI-powered planning, authentic cultural
+            experiences, and sustainable tourism that empowers local communities.
           </p>
-        </div>
-
-        {/* Tagline + Policies */}
-        <div className="border-t border-gray-600 mt-6 pt-6 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between text-sm text-gray-300">
-          <p>© {new Date().getFullYear()} Explore Jharkhand. All rights reserved.</p>
-          <p className="text-green-500">Explore Jharkhand — where culture meets technology</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:underline">Privacy Policy</a>
-            <a href="#" className="hover:underline">Terms of Service</a>
+          <div className="space-y-2 text-sm text-gray-400">
+            <p className="flex items-center gap-2">
+              <MapPin size={16} /> Ranchi, Jharkhand, India
+            </p>
+            <p className="flex items-center gap-2">
+              <Phone size={16} /> +91 12345 67890
+            </p>
+            <p className="flex items-center gap-2">
+              <Mail size={16} /> hello@johar.com
+            </p>
+          </div>
+          <div className="flex gap-3 mt-5">
+            {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                className="p-2 bg-white/10 rounded-lg hover:bg-emerald-500/30 transition-all duration-300"
+              >
+                <Icon size={16} />
+              </a>
+            ))}
           </div>
         </div>
-      </footer>
-    </>
-  )
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Explore</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <button
+                onClick={() => router.push("/destinations")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Destinations
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => router.push("/marketplace")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Marketplace
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => router.push("/guides")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Guides
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => router.push("/transport")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Transport
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        {/* Services */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Services</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <button
+                onClick={() => router.push("/plan-trip")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                AI Trip Planner
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => router.push("/marketplace")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Handicrafts Marketplace
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => router.push("/guides")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Local Guides
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Dashboard
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        {/* Auth */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Join Us</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <button
+                onClick={() => router.push("/login")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Login
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => router.push("/plan-trip")}
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Plan Your Trip
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-white/10 mt-10"></div>
+
+      {/* Bottom */}
+      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+        <p>© {new Date().getFullYear()} Johar. All rights reserved.</p>
+        <p className="text-emerald-400 font-medium mt-2 md:mt-0">
+          Where Culture Meets Technology
+        </p>
+      </div>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
