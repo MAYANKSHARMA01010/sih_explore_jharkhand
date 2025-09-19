@@ -7,22 +7,6 @@ import Footer from "@/app/components/common/footer";
 import Navbar from "@/app/components/common/navbar";
 import React, { useState, useEffect } from "react";
 
-/**
- * SignupWizard.tsx
- *
- * Single-file React + TypeScript component implementing the frontend logic for a
- * signup flow with three roles: "user", "guide", "shopkeeper".
- *
- * Behavior summary (frontend-only):
- * - Role selection: user | guide | shopkeeper
- * - user: choose phone OR email verification -> OTP flow -> account created immediately on success
- * - guide/shopkeeper: Aadhar verification (aadhar number -> send OTP -> verify) -> phone OTP -> then enter email
- *   an email verification link will be requested from backend and the account enters a "Pending email verification (24h)" state
- * - All network calls are placeholders (fetch to /api/...) and must be implemented server-side.
- * - Includes client-side validation, resend-timers, and error handling.
- *
- * Styling: Tailwind classes (no external CSS file needed). Replace or remove as desired.
- */
 
 type Role = "user" | "guide" | "shopkeeper";
 
@@ -31,32 +15,26 @@ type VerificationMethod = "email" | "phone";
 export default function SignupWizard() {
   const [role, setRole] = useState<Role | null>(null);
 
-  // Common profile fields
   const [name, setName] = useState("");
 
-  // For user role: allow user to pick email or phone OTP
   const [userMethod, setUserMethod] = useState<VerificationMethod>("email");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  // Aadhar flow data (guides & shopkeepers)
   const [aadharNumber, setAadharNumber] = useState("");
   const [aadharOtpSentId, setAadharOtpSentId] = useState<string | null>(null);
   const [aadharOtp, setAadharOtp] = useState("");
   const [aadharVerified, setAadharVerified] = useState(false);
   const [aadharUploadFile, setAadharUploadFile] = useState<File | null>(null);
 
-  // Phone/email OTP common
   const [otpSentId, setOtpSentId] = useState<string | null>(null);
   const [otpCode, setOtpCode] = useState("");
   const [isVerified, setIsVerified] = useState(false);
 
-  // UI state
   const [step, setStep] = useState<number>(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // For resend timers
   const [resendCounter, setResendCounter] = useState<number>(0);
   useEffect(() => {
     let t: number | undefined;
@@ -68,12 +46,10 @@ export default function SignupWizard() {
     };
   }, [resendCounter]);
 
-  // small validators
   const isValidEmail = (e: string) => /^\S+@\S+\.\S+$/.test(e);
   const isValidPhone = (p: string) => /^\d{10,15}$/.test(p.replace(/[^0-9]/g, ""));
   const isValidAadhar = (a: string) => /^\d{12}$/.test(a.replace(/[^0-9]/g, ""));
 
-  // helper: generic POST
   async function postJSON(url: string, body: any) {
     setLoading(true);
     setError(null);
@@ -94,7 +70,6 @@ export default function SignupWizard() {
     }
   }
 
-  // ---------- OTP flows (phone/email) ----------
   async function sendOtp(method: VerificationMethod, value: string, purpose: string) {
     if (method === "email" && !isValidEmail(value)) {
       setError("Enter a valid email");
@@ -107,14 +82,11 @@ export default function SignupWizard() {
 
     try {
       const payload = { method, value, purpose, role };
-      // Example endpoint: POST /api/send-otp with {method, value, purpose, role}
       const json = await postJSON("/api/send-otp", payload);
-      // json should contain e.g. { sentId: "abc123", ttlSeconds: 120 }
       setOtpSentId(json.sentId ?? null);
       setResendCounter(json.ttlSeconds ?? 120);
       setStep((s) => Math.max(s, 2));
     } catch (err) {
-      // error set in postJSON
     }
   }
 
@@ -137,7 +109,6 @@ export default function SignupWizard() {
     }
   }
 
-  // ---------- Aadhar-specific flow (simulate) ----------
   async function sendAadharOtp() {
     if (!isValidAadhar(aadharNumber)) {
       setError("Aadhar must be 12 digits");
@@ -160,7 +131,6 @@ export default function SignupWizard() {
       if (json.verified) {
         setAadharVerified(true);
         setStep((s) => Math.max(s, 3));
-        // Backend might return KYC status: "auto_approved" or "manual_review"
         if (json.kycStatus === "manual_review") {
           setError("Aadhar uploaded & verified, but KYC requires manual review. We'll notify you by email when ready.");
         }
@@ -174,7 +144,6 @@ export default function SignupWizard() {
     }
   }
 
-  // After aadhar and phone verified, request email verification link
   async function requestEmailVerificationAndCreateAccount() {
     if (!isValidEmail(email)) return setError("Enter a valid email before proceeding");
     try {
@@ -186,15 +155,12 @@ export default function SignupWizard() {
         aadharNumber: aadharVerified ? aadharNumber : null,
         aadharUploadProvided: !!aadharUploadFile,
       });
-      // backend should send email with a link that the user clicks to confirm (valid for 24 hours)
-      setStep(99); // final pending state
+      setStep(99); 
     } catch (err) {
     }
   }
 
-  // ---------- Submit for 'user' (email or phone OTP immediate creation) ----------
   async function submitUserSignup() {
-    // depending on userMethod, we expect isVerified to be true and otpSentId present
     if (!isVerified) return setError("Please complete OTP verification first");
     try {
       const json = await postJSON("/api/create-account", {
@@ -203,12 +169,10 @@ export default function SignupWizard() {
         email: userMethod === "email" ? email : null,
         phone: userMethod === "phone" ? phone : null,
       });
-      // json.success -> account created
       setStep(100);
     } catch (err) {}
   }
 
-  // ---------- small UI helpers ----------
   function resetErrors() {
     setError(null);
   }
@@ -218,7 +182,6 @@ export default function SignupWizard() {
     setAadharUploadFile(f);
   }
 
-  // ---------- Render ----------
   return (
     <>
     <Navbar />

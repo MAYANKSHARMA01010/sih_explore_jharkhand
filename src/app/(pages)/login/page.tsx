@@ -8,23 +8,11 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/app/components/common/navbar";
 import Footer from "@/app/components/common/footer";
 
-/**
- * LoginPage.tsx
- *
- * Companion login page to the SignupWizard. Matches the green & white theme and
- * provides two login methods:
- * - Password login (email + password)
- * - OTP login (email or phone -> send OTP -> verify)
- *
- * All network calls are placeholders (POST to /api/...). Keep or replace them with
- * your server-side implementations.
- */
-
 type LoginMode = "password" | "otp";
 
 export default function LoginPage() {
   const [mode, setMode] = useState<LoginMode>("password");
-  const [identifier, setIdentifier] = useState(""); // email or phone
+  const [identifier, setIdentifier] = useState(""); 
   const [password, setPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
   const [otpSentId, setOtpSentId] = useState<string | null>(null);
