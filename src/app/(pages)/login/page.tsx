@@ -168,7 +168,9 @@ export default function LoginPage() {
               />
               <label
                 htmlFor="identifier"
-                className="absolute left-5 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-green-700 peer-focus:text-sm cursor-text select-none"
+                className={`absolute left-5 text-gray-400 text-sm transition-all cursor-text select-none
+                  ${identifier ? "top-0 text-green-700 text-sm" : "top-3 text-gray-400 text-base"} 
+                  peer-focus:top-0 peer-focus:text-green-700 peer-focus:text-sm`}
               >
                 Email or Phone
               </label>
@@ -187,7 +189,9 @@ export default function LoginPage() {
                   />
                   <label
                     htmlFor="password"
-                    className="absolute left-5 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-green-700 peer-focus:text-sm cursor-text select-none"
+                    className={`absolute left-5 text-gray-400 text-sm transition-all cursor-text select-none
+                      ${password ? "top-0 text-green-700 text-sm" : "top-3 text-gray-400 text-base"} 
+                      peer-focus:top-0 peer-focus:text-green-700 peer-focus:text-sm`}
                   >
                     Password
                   </label>
@@ -241,11 +245,12 @@ export default function LoginPage() {
                     />
                     <label
                       htmlFor="otpCode"
-                      className="absolute left-5 top-3 text-gray-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-green-700 peer-focus:text-sm cursor-text select-none"
+                      className={`absolute left-5 text-gray-400 text-sm transition-all cursor-text select-none
+                        ${otpCode ? "top-0 text-green-700 text-sm" : "top-3 text-gray-400 text-base"} 
+                        peer-focus:top-0 peer-focus:text-green-700 peer-focus:text-sm`}
                     >
                       Enter OTP
                     </label>
-
                     <div className="flex gap-2 mt-3">
                       <button
                         className="flex-1 px-5 py-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-600 text-white rounded-2xl font-bold shadow-lg transform hover:-translate-y-1 transition"
