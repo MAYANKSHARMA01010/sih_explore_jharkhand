@@ -1,5 +1,8 @@
+"use client";
+
 import { Users, ShoppingBag, Play } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const CTASection = () => {
   return (
@@ -48,85 +51,42 @@ const CTASection = () => {
 
         {/* Main CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-          <motion.button 
-            whileHover={{ scale: 1.08 }} 
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-teal-600 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg 
-                       hover:shadow-cyan-200/50 transition-all duration-300 flex items-center group"
-          >
-            Try Demo
-            <Play className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-          
-          <motion.button 
-            whileHover={{ scale: 1.08 }} 
-            whileTap={{ scale: 0.95 }}
-            className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg 
-                       hover:bg-white/10 backdrop-blur-sm transition-all duration-300 flex items-center group"
-          >
-            Join as Local Guide
-            <Users className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-          
-          <motion.button 
-            whileHover={{ scale: 1.08 }} 
-            whileTap={{ scale: 0.95 }}
-            className="border-2 border-white/70 text-white hover:bg-white/10 px-8 py-4 rounded-xl 
-                       font-semibold text-lg backdrop-blur-sm transition-all duration-300 flex items-center group"
-          >
-            Sell Your Handicrafts
-            <ShoppingBag className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-        </div>
-
-        {/* Feature Highlights */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {[
-            { icon: "🤖", title: "AI-Powered Planning", desc: "Smart itineraries tailored to your vibe & preferences" },
-            { icon: "🌱", title: "Sustainable Tourism", desc: "Support locals while exploring Jharkhand’s natural beauty" },
-            { icon: "🎯", title: "Authentic Experiences", desc: "Verified guides & homestays for real connections" },
-          ].map((feature, idx) => (
-            <motion.div 
-              key={idx} 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              transition={{ delay: idx * 0.2 }}
-              className="text-center text-white bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:shadow-lg transition"
+          <Link href="/register">
+            <motion.button 
+              whileHover={{ scale: 1.08 }} 
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-teal-600 px-8 py-4 rounded-xl font-semibold text-lg shadow-lg 
+                        hover:shadow-cyan-200/50 transition-all duration-300 flex items-center group"
             >
-              <div className="w-16 h-16 bg-gradient-to-tr from-white/30 to-cyan-200/30 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-inner">
-                <span className="text-2xl">{feature.icon}</span>
-              </div>
-              <h3 className="font-display font-semibold text-xl mb-2">{feature.title}</h3>
-              <p className="text-white/80 text-sm">{feature.desc}</p>
-            </motion.div>
-          ))}
+              Join as User
+              <Play className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </Link>
+          
+          <Link href="/register">
+            <motion.button 
+              whileHover={{ scale: 1.08 }} 
+              whileTap={{ scale: 0.95 }}
+              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg 
+                        hover:bg-white/10 backdrop-blur-sm transition-all duration-300 flex items-center group"
+            >
+              Join as Local Guide
+              <Users className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </Link>
+          
+          <Link href="/register">
+            <motion.button 
+              whileHover={{ scale: 1.08 }} 
+              whileTap={{ scale: 0.95 }}
+              className="border-2 border-white/70 text-white hover:bg-white/10 px-8 py-4 rounded-xl 
+                        font-semibold text-lg backdrop-blur-sm transition-all duration-300 flex items-center group"
+            >
+              Sell Your Handicrafts
+              <ShoppingBag className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </Link>
         </div>
-
-        {/* Bottom Stats */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }} 
-          whileInView={{ opacity: 1, scale: 1 }} 
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center"
-        >
-          <div className="inline-flex items-center space-x-8 bg-white/10 backdrop-blur-lg border border-white/20 
-                          rounded-2xl px-8 py-5 hover:shadow-cyan-200/40 transition">
-            <div>
-              <div className="font-display font-bold text-2xl text-white">50K+</div>
-              <div className="text-white/70 text-sm">Happy Travelers</div>
-            </div>
-            <div className="w-px h-8 bg-white/30"></div>
-            <div>
-              <div className="font-display font-bold text-2xl text-white">500+</div>
-              <div className="text-white/70 text-sm">Local Partners</div>
-            </div>
-            <div className="w-px h-8 bg-white/30"></div>
-            <div>
-              <div className="font-display font-bold text-2xl text-white">4.9★</div>
-              <div className="text-white/70 text-sm">Average Rating</div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

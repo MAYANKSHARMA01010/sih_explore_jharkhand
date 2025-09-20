@@ -11,12 +11,10 @@ import {
   MapPin,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../../../public/Logo.png";
-import { useRouter } from "next/navigation";
 
 function Footer() {
-  const router = useRouter();
-
   return (
     <footer className="relative overflow-hidden bg-gray-950 text-white">
       {/* Background overlay*/}
@@ -56,14 +54,20 @@ function Footer() {
             </p>
           </div>
           <div className="flex gap-3 mt-5">
-            {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-              <a
+            {[
+              { Icon: Facebook, link: "https://facebook.com" },
+              { Icon: Twitter, link: "https://twitter.com" },
+              { Icon: Instagram, link: "https://instagram.com" },
+              { Icon: Youtube, link: "https://youtube.com" },
+            ].map(({ Icon, link }, i) => (
+              <Link
                 key={i}
-                href="#"
+                href={link}
+                target="_blank"
                 className="p-2 bg-white/10 rounded-lg hover:bg-emerald-500/30 transition-all duration-300"
               >
                 <Icon size={16} />
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -73,36 +77,36 @@ function Footer() {
           <h3 className="text-lg font-semibold mb-4">Explore</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <button
-                onClick={() => router.push("/destinations")}
+              <Link
+                href="/destination"
                 className="hover:text-emerald-400 transition-colors"
               >
                 Destinations
-              </button>
+              </Link>
             </li>
             <li>
-              <button
-                onClick={() => router.push("/marketplace")}
+              <Link
+                href="/marketplace"
                 className="hover:text-emerald-400 transition-colors"
               >
                 Marketplace
-              </button>
+              </Link>
             </li>
             <li>
-              <button
-                onClick={() => router.push("/guides")}
+              <Link
+                href="/guides"
                 className="hover:text-emerald-400 transition-colors"
               >
                 Guides
-              </button>
+              </Link>
             </li>
             <li>
-              <button
-                onClick={() => router.push("/transport")}
+              <Link
+                href="/transport"
                 className="hover:text-emerald-400 transition-colors"
               >
                 Transport
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
@@ -112,36 +116,20 @@ function Footer() {
           <h3 className="text-lg font-semibold mb-4">Services</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <button
-                onClick={() => router.push("/plan-trip")}
+              <Link
+                href="/planTrip"
                 className="hover:text-emerald-400 transition-colors"
               >
-                AI Trip Planner
-              </button>
+                Plan My Trip
+              </Link>
             </li>
             <li>
-              <button
-                onClick={() => router.push("/marketplace")}
-                className="hover:text-emerald-400 transition-colors"
-              >
-                Handicrafts Marketplace
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => router.push("/guides")}
-                className="hover:text-emerald-400 transition-colors"
-              >
-                Local Guides
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => router.push("/dashboard")}
+              <Link
+                href="/dashboard"
                 className="hover:text-emerald-400 transition-colors"
               >
                 Dashboard
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
@@ -151,20 +139,20 @@ function Footer() {
           <h3 className="text-lg font-semibold mb-4">Join Us</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <button
-                onClick={() => router.push("/login")}
+              <Link
+                href="/login"
                 className="hover:text-emerald-400 transition-colors"
               >
                 Login
-              </button>
+              </Link>
             </li>
             <li>
-              <button
-                onClick={() => router.push("/plan-trip")}
+              <Link
+                href="/register"
                 className="hover:text-emerald-400 transition-colors"
               >
-                Plan Your Trip
-              </button>
+                Register
+              </Link>
             </li>
           </ul>
         </div>

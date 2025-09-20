@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
                 Login
               </Button>
               <Button
-                onClick={() => router.push("/plan-trip")}
+                onClick={() => router.push("/planTrip")}
                 className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 text-lg rounded-lg font-semibold shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg"
               >
                 Plan Your Trip

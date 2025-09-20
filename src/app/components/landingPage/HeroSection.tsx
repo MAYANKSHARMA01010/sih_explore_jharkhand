@@ -1,5 +1,6 @@
 import { ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import heroImage from "../../../public/heroImage.jpg";
 
 const HeroSection = () => {
@@ -53,31 +54,33 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row flex-wrap gap-5 justify-center items-center mb-12 animate-fade-in-up-delay-3">
-            <a
-              href="#plan"
+            <Link
+              href="/planTrip"
               className="group inline-flex items-center px-8 sm:px-10 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 transform-gpu
                 bg-emerald-600 text-white shadow-lg hover:scale-105 hover:bg-emerald-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-emerald-500 focus:ring-opacity-50"
               aria-label="Plan your trip with AI assistance"
             >
               Plan Your Trip
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="#marketplace"
+            </Link>
+
+            <Link
+              href="/marketplace"
               className="group inline-flex items-center px-8 sm:px-10 py-3 sm:py-4 rounded-full font-semibold transition-all duration-300 transform-gpu
                 border-2 border-emerald-500 text-emerald-300 hover:text-white hover:bg-emerald-600 hover:border-emerald-600 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-500 focus:ring-opacity-50"
               aria-label="Explore the travel marketplace"
             >
               Explore Marketplace
-            </a>
-            <a
-              href="#guides"
+            </Link>
+
+            <Link
+              href="/guides"
               className="flex items-center px-6 py-3 text-gray-200 hover:text-emerald-400 transition-colors font-medium"
               aria-label="Meet our local guides"
             >
               <Play className="mr-2 h-5 w-5 fill-current animate-bounce" />
               Meet Our Guides
-            </a>
+            </Link>
           </div>
 
           {/* Stats */}
