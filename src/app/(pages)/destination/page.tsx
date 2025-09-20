@@ -3,13 +3,11 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react";
 import Navbar from "../../components/common/navbar";
-import DestinationCard from "../../components/ui/DestinationCard";  // import the new component
+import DestinationCard from "../../components/ui/DestinationCard";  
 
-// ✅ Shared image: update this once to change everywhere
 const SHARED_IMAGE =
   "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80";
 
-// ===== Data =====
 const destinationsData = [
   {
     id: 1,
