@@ -47,7 +47,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`w-full fixed top-0 z-50 transition-all duration-500 ${navBg}`}>
+      <nav
+        className={`w-full fixed top-0 z-50 transition-all duration-500 ${navBg}`}
+      >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:py-5">
           {/* Brand */}
           <div
@@ -73,7 +75,9 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Links (lg and above) */}
-          <div className={`hidden lg:flex items-center space-x-8 font-semibold transition-colors duration-500 ${textColor}`}>
+          <div
+            className={`hidden lg:flex items-center space-x-8 font-semibold transition-colors duration-500 ${textColor}`}
+          >
             {links.map((link) => (
               <button
                 key={link.name}
@@ -81,7 +85,7 @@ const Navbar = () => {
                 className="relative group text-lg transition-all duration-300"
               >
                 <span className="group-hover:text-green-500">{link.name}</span>
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-green-400 to-yellow-400 transition-all duration-500 group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-green-400 to-yellow-40Next.js00 transition-all duration-500 group-hover:w-full"></span>
               </button>
             ))}
           </div>
@@ -93,7 +97,9 @@ const Navbar = () => {
               <DropdownMenuTrigger asChild>
                 <Button
                   className={`shadow-md rounded-full p-3 transition-all duration-500 ${
-                    isHome && !scrolled ? "bg-white/20 text-white hover:bg-white/40" : "bg-gray-100 text-gray-800 hover:bg-green-100"
+                    isHome && !scrolled
+                      ? "bg-white/20 text-white hover:bg-white/40"
+                      : "bg-gray-100 text-gray-800 hover:bg-green-100"
                   }`}
                   size="icon"
                 >
@@ -104,7 +110,15 @@ const Navbar = () => {
                 <DropdownMenuItem className="hover:bg-green-100 transition-colors text-gray-800">
                   English
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-green-100 transition-colors text-gray-800">
+                <DropdownMenuItem
+                  className="hover:bg-green-100 transition-colors text-gray-800"
+                  onClick={() => {
+                    alert(
+                      "Hindi is not available right now. We are working on it."
+                    );
+                  }}
+                  onSelect={(e) => e.preventDefault()}
+                >
                   हिंदी
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -129,7 +143,9 @@ const Navbar = () => {
             {/* Hamburger (visible below xl) */}
             <button
               className={`xl:hidden focus:outline-none p-3 rounded-md transition-colors text-xl ${
-                isHome && !scrolled ? "text-white" : "text-gray-800 hover:bg-gray-100"
+                isHome && !scrolled
+                  ? "text-white"
+                  : "text-gray-800 hover:bg-gray-100"
               }`}
               onClick={() => setSidebarOpen(true)}
             >
@@ -142,7 +158,10 @@ const Navbar = () => {
       {/* Sidebar */}
       {sidebarOpen && (
         <div className="fixed inset-0 z-50 flex">
-          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setSidebarOpen(false)}></div>
+          <div
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={() => setSidebarOpen(false)}
+          ></div>
           <div className="relative w-64 bg-white h-full p-6 flex flex-col gap-6">
             <button
               onClick={() => setSidebarOpen(false)}
